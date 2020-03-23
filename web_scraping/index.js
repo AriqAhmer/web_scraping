@@ -1,13 +1,15 @@
 //test for Mmegi
+//importing modules
 const axios = require('axios');
 const cheerio = require('cheerio');
 const prompt = require('prompt-sync')();
 const fs = require('fs');
 
-//url
-// const url = 'http://www.mmegi.bw/index.php?aid=84965&dir=2020/march/21';
+//getting url from user
 const url = prompt('Enter page url: ');
+//getting file name from user
 const file_name = prompt('Enter output file name: ');
+//creating a write stream for the file
 const writeStream = fs.createWriteStream(file_name);
 
 //axios
@@ -34,5 +36,6 @@ axios.get(url)
     getData(response.data);
   })
   .catch(error => {
+    //logging any errors
     console.log(error);
   })
